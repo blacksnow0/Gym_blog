@@ -27,7 +27,7 @@ function Home() {
     if (user) {
       fetchWorkouts(); // Fetch workouts only if user is logged in
     }
-  }, [dispatch, user, workouts]);
+  }, [dispatch, user]);
 
   return (
     <div className="home">
