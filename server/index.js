@@ -8,14 +8,16 @@ const app = express();
 const userRouter = require("./routes/userRoute");
 const workoutRouter = require("./routes/workoutRoute");
 
+const PORT = process.env.PORT || 4400;
+
 app.use(express.json());
 app.use(cors());
 
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() =>
-    app.listen(process.env.PORT, () => {
-      console.log(`Mongoose connected with server at ${process.env.PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Mongoose connected with server at ${PORT}`);
     })
   )
   .catch((err) => {
