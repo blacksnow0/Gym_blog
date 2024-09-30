@@ -12,10 +12,13 @@ export const useRegister = () => {
     setError(null);
 
     try {
-      const res = await axios.post("http://localhost:4400/api/users/register", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://gym-blog-3.onrender.com/api/users/register",
+        {
+          email,
+          password,
+        }
+      );
       if (res.status === 200) {
         const { email, token } = res.data;
         localStorage.setItem("user", JSON.stringify({ email, token }));

@@ -17,7 +17,7 @@ export const WorkoutForm = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:4400/api/workouts/",
+        "https://gym-blog-3.onrender.com/api/workouts/",
         {
           title,
           load,

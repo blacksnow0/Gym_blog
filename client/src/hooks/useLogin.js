@@ -10,10 +10,13 @@ export const useLogin = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.post("http://localhost:4400/api/users/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://gym-blog-3.onrender.com/api/users/login",
+        {
+          email,
+          password,
+        }
+      );
 
       if (res.status === 200) {
         const { email, token } = res.data;

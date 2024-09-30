@@ -13,7 +13,7 @@ function Home() {
     const fetchWorkouts = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4400/api/workouts/",
+          "https://gym-blog-3.onrender.com/api/workouts/",
           {
             headers: { Authorization: `Bearer ${user.token}` }, // Ensure token exists and is valid
           }

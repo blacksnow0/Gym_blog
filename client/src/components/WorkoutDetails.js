@@ -13,7 +13,7 @@ export const WorkoutDetails = ({ workout }) => {
     const fetchPosterEmail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4400/api/workouts/${workout.user_id}`,
+          `https://gym-blog-3.onrender.com/api/workouts/${workout.user_id}`,
           {
             headers: { Authorization: `Bearer ${user.token}` },
           }
@@ -34,7 +34,7 @@ export const WorkoutDetails = ({ workout }) => {
     }
     try {
       const res = await axios.delete(
-        "http://localhost:4400/api/workouts/" + workout._id,
+        "https://gym-blog-3.onrender.com/api/workouts/" + workout._id,
         {
           headers: { Authorization: `Bearer ${user.token}` },
         }
