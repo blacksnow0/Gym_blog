@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Loader from "./components/Loader";
+import { ToastContainer } from "react-toastify";
 function App() {
   const { user } = useAuthContext();
   return (
@@ -27,6 +28,7 @@ function App() {
           />
         </Routes>
       </div>
+      <ToastContainer />
     </div>
   );
 }
