@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
+import { Oval } from "react-loader-spinner";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,7 +32,13 @@ function Login() {
           setPassword(e.target.value);
         }}
       ></input>
-      <button disabled={loading}>Login</button>
+      <button disabled={loading}>
+        {loading ? (
+          <Oval color="#00BFFF" height={20} width={20} /> // Show spinner while loading
+        ) : (
+          "Login"
+        )}
+      </button>
       {error && <div className="error">{error}</div>}
     </form>
   );

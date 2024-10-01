@@ -1,11 +1,11 @@
-import { useWorkoutContext } from "../hooks/useWorkoutContext";
+// import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import axios from "axios";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useEffect, useState } from "react";
 
 export const WorkoutDetails = ({ workout }) => {
-  const { dispatch } = useWorkoutContext();
+  // const { dispatch } = useWorkoutContext();
   const { user } = useAuthContext();
   const [posterEmail, setPosterEmail] = useState("");
 
@@ -28,22 +28,22 @@ export const WorkoutDetails = ({ workout }) => {
     }
   }, [workout.user_id, user.token]);
 
-  const handleSubmit = async () => {
-    if (!user) {
-      return;
-    }
-    try {
-      const res = await axios.delete(
-        "https://gym-blog-3.onrender.com/api/workouts/" + workout._id,
-        {
-          headers: { Authorization: `Bearer ${user.token}` },
-        }
-      );
-      dispatch({ type: "DELETE_WORKOUT", payload: res.data });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const handleSubmit = async () => {
+  //   if (!user) {
+  //     return;
+  //   }
+  //   try {
+  //     const res = await axios.delete(
+  //       "https://gym-blog-3.onrender.com/api/workouts/" + workout._id,
+  //       {
+  //         headers: { Authorization: `Bearer ${user.token}` },
+  //       }
+  //     );
+  //     dispatch({ type: "DELETE_WORKOUT", payload: res.data });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <div className="workout-details">
@@ -62,9 +62,9 @@ export const WorkoutDetails = ({ workout }) => {
       <p>
         <strong>Posted by:</strong> {posterEmail ? posterEmail : "Loading..."}
       </p>
-      <span className="material-symbols-outlined" onClick={handleSubmit}>
+      {/* <span className="material-symbols-outlined" onClick={handleSubmit}>
         delete
-      </span>
+      </span> */}
     </div>
   );
 };

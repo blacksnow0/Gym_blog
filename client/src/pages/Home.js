@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
+import { useLoadingContext } from "../context/loadingContext";
+
 import axios from "axios";
 import { WorkoutDetails } from "../components/WorkoutDetails";
 import { WorkoutForm } from "../components/WorkoutForm";
@@ -8,9 +10,26 @@ import { WorkoutForm } from "../components/WorkoutForm";
 function Home() {
   const { user } = useAuthContext();
   const { workouts, dispatch } = useWorkoutContext();
+  // const [loading, setLoading] = useState(true);
+  // const [loadingText, setLoadingText] = useState("Loading");
+  const { setLoading } = useLoadingContext();
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setLoadingText((prev) => {
+  //       if (prev === "Loading...") {
+  //         return "Loading";
+  //       }
+  //       return prev + ".";
+  //     });
+  //   }, 500); // Change dots every 0.5 seconds
+
+  //   return () => clearInterval(interval); // Clean up interval on unmount
+  // }, []);
 
   useEffect(() => {
     const fetchWorkouts = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           "https://gym-blog-3.onrender.com/api/workouts/",
@@ -21,13 +40,15 @@ function Home() {
         dispatch({ type: "SET_WORKOUTS", payload: response.data });
       } catch (err) {
         console.error(err); // Logs error in case API call fails
+      } finally {
+        setLoading(false);
       }
     };
 
     if (user) {
       fetchWorkouts(); // Fetch workouts only if user is logged in
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, setLoading]);
 
   return (
     <div className="home">

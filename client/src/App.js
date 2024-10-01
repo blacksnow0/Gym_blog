@@ -4,11 +4,13 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useAuthContext } from "./hooks/useAuthContext";
+import Loader from "./components/Loader";
 function App() {
   const { user } = useAuthContext();
   return (
     <div className="App">
       <Navbar />
+      <Loader />
       <div className="pages">
         <Routes>
           <Route
