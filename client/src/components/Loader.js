@@ -1,5 +1,6 @@
 import { useLoadingContext } from "../context/loadingContext";
 import { useState, useEffect } from "react";
+import "../styles/Loader.css";
 
 const Loader = () => {
   const { loading } = useLoadingContext();
@@ -15,13 +16,7 @@ const Loader = () => {
 
     return () => clearInterval(intervalId); // Clean up the interval on component unmount
   }, [loading]);
-  return (
-    loading && (
-      <div className="loading-screen">
-        <h2>Loading{dots}</h2>
-      </div>
-    )
-  );
+  return loading && <div className="loading-screen">Loading{dots}</div>;
 };
 
 export default Loader;

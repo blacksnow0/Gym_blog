@@ -13,7 +13,11 @@ body {
 }
 header {
   background: #fff;
+
+  position: relative; /* Make sure it has a z-index */
+  z-index: 1000; /* Higher z-index to keep it above the loading screen */
 }
+
 header .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -147,13 +151,3 @@ form.login {
     transform: rotate(360deg);
   }
 } */
-
-.loading-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-  background-color: #f0f0f0; /* Light background */
-  font-size: 24px; /* Make text larger */
-  color: #333; /* Darker text */
-}

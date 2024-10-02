@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { dispatch } = useAuthContext();
   const login = async (email, password) => {
     setLoading(true);
@@ -33,6 +33,7 @@ export const useLogin = () => {
       } else {
         setError("Error while Logging in");
       }
+    } finally {
       setLoading(false);
     }
   };

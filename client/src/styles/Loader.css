@@ -1,0 +1,17 @@
+/* Loader CSS to take up the full screen but keep the navbar visible */
+.loading-screen {
+  position: fixed; /* Stays in place even when scrolling */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  font-size: 24px; /* Adjust font size */
+  color: #333; /* Darker text color */
+  z-index: 999; /* Lower z-index than navbar to keep it visible */
+}
+
+/* Navbar CSS (if not already set) */
