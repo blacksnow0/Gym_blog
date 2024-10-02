@@ -1,32 +1,29 @@
 // import { useWorkoutContext } from "../hooks/useWorkoutContext";
-import { useAuthContext } from "../hooks/useAuthContext";
-import axios from "axios";
+// import { useAuthContext } from "../hooks/useAuthContext";
+// import axios from "axios";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+
+// import api from "../utils/axios";
 
 export const WorkoutDetails = ({ workout }) => {
   // const { dispatch } = useWorkoutContext();
-  const { user } = useAuthContext();
-  const [posterEmail, setPosterEmail] = useState("");
+  // const { user } = useAuthContext();
+  // const [posterEmail, setPosterEmail] = useState("");
 
-  useEffect(() => {
-    const fetchPosterEmail = async () => {
-      try {
-        const response = await axios.get(
-          `https://gym-blog-3.onrender.com/api/workouts/${workout.user_id}`,
-          {
-            headers: { Authorization: `Bearer ${user.token}` },
-          }
-        );
-        setPosterEmail(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    if (workout.user_id) {
-      fetchPosterEmail();
-    }
-  }, [workout.user_id, user.token]);
+  // useEffect(() => {
+  //   const fetchPosterEmail = async () => {
+  //     try {
+  //       const response = await api.get(`/workouts/${workout.user_id}`);
+  //       setPosterEmail(response.data);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  //   if (workout.user_id) {
+  //     fetchPosterEmail();
+  //   }
+  // }, [workout.user_id, user.token]);
 
   // const handleSubmit = async () => {
   //   if (!user) {
@@ -59,9 +56,9 @@ export const WorkoutDetails = ({ workout }) => {
       <p>
         {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
       </p>
-      <p>
+      {/* <p>
         <strong>Posted by:</strong> {posterEmail ? posterEmail : "Loading..."}
-      </p>
+      </p> */}
       {/* <span className="material-symbols-outlined" onClick={handleSubmit}>
         delete
       </span> */}

@@ -13,8 +13,8 @@ function Navbar() {
   const handleClick = () => {
     toast.success("Logged out successfully!", {
       position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
+      autoClose: 2000,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: false,
       draggable: false,

@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Loader from "./components/Loader";
 import { ToastContainer } from "react-toastify";
+import UserDashboard from "./pages/UserDashboard";
 function App() {
   const { user } = useAuthContext();
   return (
@@ -26,6 +27,7 @@ function App() {
             path="/register"
             element={!user ? <Register /> : <Navigate to="/" />}
           />
+          <Route path="/user" element={<UserDashboard />} />
         </Routes>
       </div>
       <ToastContainer />

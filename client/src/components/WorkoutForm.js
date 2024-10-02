@@ -82,15 +82,14 @@
 //   );
 // };
 import { useState } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-import axios from "axios";
+// import axios from "axios";
+import api from "../utils/axios";
 import { useWorkoutContext } from "../hooks/useWorkoutContext";
 import { ThreeDots } from "react-loader-spinner"; // Import the spinner
 import { toast } from "react-toastify"; // Import toast
 import "react-toastify/dist/ReactToastify.css"; // Import styles
 
 export const WorkoutForm = () => {
-  const { user } = useAuthContext();
   const { dispatch } = useWorkoutContext();
 
   const [title, setTitle] = useState("");
@@ -106,17 +105,11 @@ export const WorkoutForm = () => {
     setError(null);
 
     try {
-      const res = await axios.post(
-        "https://gym-blog-3.onrender.com/api/workouts/",
-        {
-          title,
-          load,
-          reps,
-        },
-        {
-          headers: { Authorization: `Bearer ${user.token}` },
-        }
-      );
+      const res = await api.post("/workouts/", {
+        title,
+        load,
+        reps,
+      });
 
       dispatch({ type: "CREATE_WORKOUT", payload: res.data });
       setTitle("");
@@ -128,8 +121,8 @@ export const WorkoutForm = () => {
       // Show success toast
       toast.success("Workout added successfully!", {
         position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
+        autoClose: 2000,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
