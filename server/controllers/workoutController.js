@@ -14,8 +14,10 @@ const getAllWorkouts = async (req, res) => {
       .lean();
     res.status(200).json(workouts);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Error fetching workouts" });
+    console.error("Error fetching workouts", err);
+    res
+      .status(500)
+      .json({ error: "Error fetching workouts, please try again later." });
   }
 };
 
@@ -79,7 +81,8 @@ const createWorkout = async (req, res) => {
 
   try {
     const user_id = req.user._id; // Assuming req.user exists from authentication middleware
-    const workout = await Workout.create({ title, load, reps, user_id });
+    let workout = await Workout.create({ title, load, reps, user_id });
+    workout = await workout.populate("user_id", "email");
     res.status(201).json(workout);
   } catch (err) {
     console.error(err);
