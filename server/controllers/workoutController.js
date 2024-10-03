@@ -8,7 +8,10 @@ const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 // Get all workouts
 const getAllWorkouts = async (req, res) => {
   try {
-    const workouts = await Workout.find({}).sort({ createdAt: -1 }).lean();
+    const workouts = await Workout.find({})
+      .sort({ createdAt: -1 })
+      .populate("user_id", "email")
+      .lean();
     res.status(200).json(workouts);
   } catch (err) {
     console.error(err);
@@ -87,7 +90,6 @@ const createWorkout = async (req, res) => {
 // Delete a workout by id
 const deleteWorkout = async (req, res) => {
   const { id } = req.params;
-  console.log("this ran");
 
   if (!isValidObjectId(id)) {
     return res.status(400).json({ error: "Invalid workout ID" });
