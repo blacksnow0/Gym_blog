@@ -88,7 +88,7 @@ function Home() {
       setLoading(true);
       try {
         const response = await api.get("/workouts/");
-        dispatch({ type: "SET_WORKOUTS", payload: response.data });
+        dispatch({ type: "GET_ALL_WORKOUTS", payload: response.data });
       } catch (err) {
         console.error("Failed to fetch workouts:", err);
       } finally {

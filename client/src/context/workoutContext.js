@@ -6,7 +6,7 @@ export const WorkoutContext = createContext();
 // Reducer function to handle different actions
 export const workoutReducer = (state, action) => {
   switch (action.type) {
-    case "SET_WORKOUTS":
+    case "GET_ALL_WORKOUTS":
       return {
         workouts: action.payload,
       };
