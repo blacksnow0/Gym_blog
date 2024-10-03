@@ -27,7 +27,10 @@ function App() {
             path="/register"
             element={!user ? <Register /> : <Navigate to="/" />}
           />
-          <Route path="/user" element={<UserDashboard />} />
+          <Route
+            path="/user"
+            element={!user ? <UserDashboard /> : <Navigate to="/" />}
+          />
         </Routes>
       </div>
       <ToastContainer />
