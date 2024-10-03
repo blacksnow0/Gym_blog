@@ -17,7 +17,8 @@ const requireAuth = async (req, res, next) => {
     const { _id } = jwt.verify(token, process.env.SECRET);
 
     // Find user by _id
-    req.user = await User.findOne({ _id }).select("_id");
+    req.user = await User.findOne({ _id }).select("_id email");
+    console.log(req.user);
 
     if (!req.user) {
       return res.status(401).json({ error: "User not found" });

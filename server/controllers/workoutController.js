@@ -5,6 +5,24 @@ const User = require("../models/userModel");
 // Helper function to validate ObjectId
 const isValidObjectId = (id) => mongoose.Types.ObjectId.isValid(id);
 
+//getting workouts for particular user
+const getUserWorkouts = async (req, res) => {
+  const user_id = req.user._id;
+  if (!isValidObjectId(user_id)) {
+    return res.status(400).json({ error: "Invalid userId" });
+  }
+  try {
+    const workouts = await Workout.find({ user_id })
+      .sort({ createdAt: -1 })
+      .populate("user_id", "email")
+      .lean();
+    res.status(200).json(workouts);
+  } catch (err) {
+    console.error("Error fetching workouts", err);
+    res.status(500).json({ error: "Error fetching workouts" });
+  }
+};
+
 // Get all workouts
 const getAllWorkouts = async (req, res) => {
   try {
@@ -40,25 +58,6 @@ const getWorkout = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error fetching the workout" });
-  }
-};
-
-//Get a Username
-
-const getUserName = async (req, res) => {
-  const { id } = req.params;
-  if (!isValidObjectId(id)) {
-    return res.status(400).json({ error: "Invalid user id" });
-  }
-  try {
-    const user = await User.findById(id).populate("email");
-    if (!user) {
-      return res.status(404).json({ error: "user not found" });
-    }
-    res.status(200).json(user.email);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Error fetching the User" });
   }
 };
 
@@ -117,5 +116,5 @@ module.exports = {
   createWorkout,
   getWorkout,
   deleteWorkout,
-  getUserName,
+  getUserWorkouts,
 };
