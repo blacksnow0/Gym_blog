@@ -56,12 +56,13 @@ export const WorkoutDetails = ({ workout }) => {
       <p>
         {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
       </p>
-      {/* <p>
-        <strong>Posted by:</strong> {posterEmail ? posterEmail : "Loading..."}
-      </p> */}
       {/* <span className="material-symbols-outlined" onClick={handleSubmit}>
         delete
       </span> */}
+      <p>
+        <strong>Posted by:</strong>
+        {workout.user_id.email}
+      </p>
     </div>
   );
 };
