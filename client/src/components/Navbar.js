@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { toast } from "react-toastify";
+import "../styles/Navbar.css";
 
 import "react-toastify/dist/ReactToastify.css";
 

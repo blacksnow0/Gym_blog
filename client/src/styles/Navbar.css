@@ -1,0 +1,72 @@
+/* navbar.css */
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin-left: 10px;
+  transition: color 0.3s;
+}
+
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+nav button {
+  background: #fff; /* Adjust based on your theme */
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: "Poppins";
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
+  transition: background 0.3s, color 0.3s; /* Transition effect */
+}
+
+nav button:hover {
+  background: var(--primary);
+  color: #fff; /* Adjust for better contrast */
+}
+
+header {
+  background: #fff; /* Make sure to keep the header background */
+  position: fixed; /* Fixed position */
+  top: 0; /* Stick to the top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Higher z-index to keep it above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for separation */
+}
+
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav {
+    flex-direction: column; /* Stack items on small screens */
+  }
+}
+
+/* Add padding to the body or main content to avoid overlap */
+body {
+  padding-top: 60px; /* Adjust this value based on your header's height */
+}

@@ -1,0 +1,27 @@
+.sidebar {
+  width: 200px; /* Set a width for the sidebar */
+  background: #fff; /* Background color */
+  padding: 20px; /* Padding for the sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: fixed; /* Fix the sidebar to the left */
+  height: 100%; /* Full height */
+  overflow-y: auto; /* Enable scrolling if needed */
+}
+
+.sidebar ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.sidebar li {
+  margin: 10px 0; /* Space between items */
+}
+
+.sidebar a {
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Text color */
+}
+
+.sidebar a:hover {
+  color: var(--primary); /* Change color on hover */
+}

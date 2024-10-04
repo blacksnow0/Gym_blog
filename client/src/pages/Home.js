@@ -76,7 +76,8 @@ import { useLoadingContext } from "../context/loadingContext";
 
 import api from "../utils/axios";
 import { WorkoutDetails } from "../components/WorkoutDetails";
-import { WorkoutForm } from "../components/WorkoutForm";
+import "../styles/Home.css";
+// import { WorkoutForm } from "../components/WorkoutForm";
 
 function Home() {
   const { user } = useAuthContext();
@@ -112,7 +113,7 @@ function Home() {
           <p>No workouts found. Start adding your workouts!</p>
         )}
       </div>
-      <WorkoutForm />
+      {/* <WorkoutForm /> */}
     </div>
   );
 }
