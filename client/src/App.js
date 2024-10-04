@@ -8,7 +8,10 @@ import Loader from "./components/Loader";
 import { ToastContainer } from "react-toastify";
 import UserDashboard from "./pages/UserDashboard";
 function App() {
-  const { user } = useAuthContext();
+  const { user, authIsReady } = useAuthContext();
+  if (!authIsReady) {
+    return <Loader />;
+  }
   return (
     <div className="App">
       <Navbar />
@@ -29,7 +32,7 @@ function App() {
           />
           <Route
             path="/user"
-            element={!user ? <UserDashboard /> : <Navigate to="/" />}
+            element={user ? <UserDashboard /> : <Navigate to="/login" />}
           />
         </Routes>
       </div>
