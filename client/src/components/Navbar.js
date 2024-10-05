@@ -28,7 +28,7 @@ function Navbar() {
     <header>
       <div className="container">
         <Link to="/">
-          <h3>Gym_Growth</h3>
+          <h3>I Changed It</h3>
         </Link>
         <nav>
           {user ? ( // Conditional rendering for authenticated users
